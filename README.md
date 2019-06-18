@@ -7,3 +7,6 @@
     2. [ ] 6 BLDC Motor ESC Controller - Start: 16/06/2019   
 2. Matlab
     1. [ ] IMU Testing
+
+# 2. Hardware
+[PWM Controller PCA9685](https://nshopvn.com/product/mach-dieu-khien-16-chanel-pwm-pca9685/)  

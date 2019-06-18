@@ -1,0 +1,15 @@
+--cpu=Cortex-M4.fp
+".\gpio_iotoggle\startup_stm32f30x.o"
+".\gpio_iotoggle\stm32f3_discovery.o"
+".\gpio_iotoggle\stm32f30x_exti.o"
+".\gpio_iotoggle\stm32f30x_gpio.o"
+".\gpio_iotoggle\stm32f30x_misc.o"
+".\gpio_iotoggle\stm32f30x_rcc.o"
+".\gpio_iotoggle\stm32f30x_syscfg.o"
+".\gpio_iotoggle\main.o"
+".\gpio_iotoggle\stm32f30x_it.o"
+".\gpio_iotoggle\system_stm32f30x.o"
+--library_type=microlib --strict --scatter ".\GPIO_IOToggle\GPIO_IOToggle.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "GPIO_IOToggle.map" -o .\GPIO_IOToggle\GPIO_IOToggle.axf
