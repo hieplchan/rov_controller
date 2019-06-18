@@ -1,133 +1,53 @@
-/**
-  ******************************************************************************
-  * @file    GPIO_IOToggle/main.c
-  * @author  MCD Application Team
-  * @version V1.1.0
-  * @date    20-September-2012
-  * @brief   Main program body
-  ******************************************************************************
-  * @attention
-  *
-  * <h2><center>&copy; COPYRIGHT 2012 STMicroelectronics</center></h2>
-  *
-  * Licensed under MCD-ST Liberty SW License Agreement V2, (the "License");
-  * You may not use this file except in compliance with the License.
-  * You may obtain a copy of the License at:
-  *
-  *        http://www.st.com/software_license_agreement_liberty_v2
-  *
-  * Unless required by applicable law or agreed to in writing, software
-  * distributed under the License is distributed on an "AS IS" BASIS,
-  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  * See the License for the specific language governing permissions and
-  * limitations under the License.
-  *
-  ******************************************************************************
-  */
-
-/* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "stm32f30x_gpio.h"
 
-/** @addtogroup STM32F3_Discovery_Peripheral_Examples
-  * @{
-  */
-
-/** @addtogroup GPIO_IOToggle
-  * @{
-  */
-
-/* Private typedef -----------------------------------------------------------*/
-/* Private define ------------------------------------------------------------*/
-#define BSRR_VAL 0xC000
-/* Private macro -------------------------------------------------------------*/
-/* Private variables ---------------------------------------------------------*/
 GPIO_InitTypeDef        GPIO_InitStructure;
-/* Private function prototypes -----------------------------------------------*/
-/* Private functions ---------------------------------------------------------*/
 
-/**
-  * @brief  Main program.
-  * @param  None
-  * @retval None
-  */
+void LED_Init(void);
+void Delay(__IO uint32_t nTime);
+
+__IO uint32_t TimingDelay = 0;
+
 int main(void)
 {
-  /*!< At this stage the microcontroller clock setting is already configured,
-  this is done through SystemInit() function which is called from startup
-  file (startup_stm32f30x.s) before to branch to application main.
-  To reconfigure the default setting of SystemInit() function, refer to
-  system_stm32f30x.c file
-  */
+  LED_Init();
 
+  while (1)
+  {
+    /* Set PE15 */
+    GPIO_SetBits(GPIOE, GPIO_Pin_15);
+    Delay(50);
+    
+    /* Reset PE15 */
+    GPIO_ResetBits(GPIOE, GPIO_Pin_15);
+    Delay(50);
+  }
+}
+
+void LED_Init(void)
+{
   /* GPIOE Periph clock enable */
   RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOE, ENABLE);
 
-  /* Configure PE14 and PE15 in output pushpull mode */
-  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_15 | GPIO_Pin_14;
+  /* Configure PE15 in output pushpull mode */
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_15;
   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
   GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
-  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
   GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
   GPIO_Init(GPIOE, &GPIO_InitStructure);
+}
 
-  /* To achieve GPIO toggling maximum frequency, the following  sequence is mandatory.
-  You can monitor PE14 and PE15 on the scope to measure the output signal.
-  If you need to fine tune this frequency, you can add more GPIO set/reset
-  cycles to minimize more the infinite loop timing.
-  This code needs to be compiled with high speed optimization option.  */
-  while (1)
-  {
-    /* Set PE14 and PE15 */
-    GPIO_SetBits(GPIOE, GPIO_Pin_15);
-    // GPIOE->BSRR = BSRR_VAL;
-//    /* Reset PE14 and PE15 */
-//    GPIOE->BRR = BSRR_VAL;
-//
-//    /* Set PE14 and PE15 */
-//    GPIOE->BSRR = BSRR_VAL;
-//    /* Reset PE14 and PE15 */
-//    GPIOE->BRR = BSRR_VAL;
-//
-//    /* Set PE14 and PE15 */
-//    GPIOE->BSRR = BSRR_VAL;
-//    /* Reset PE14 and PE15 */
-//    GPIOE->BRR = BSRR_VAL;
-//
-//    /* Set PE14 and PE15 */
-//    GPIOE->BSRR = BSRR_VAL;
-//    /* Reset PE14 and PE15 */
-//    GPIOE->BRR = BSRR_VAL;
-//
-//    /* Set PE14 and PE15 */
-//    GPIOE->BSRR = BSRR_VAL;
-//    /* Reset PE14 and PE15 */
-//    GPIOE->BRR = BSRR_VAL;
-//
-//    /* Set PE14 and PE15 */
-//    GPIOE->BSRR = BSRR_VAL;
-//    /* Reset PE14 and PE15 */
-//    GPIOE->BRR = BSRR_VAL;
-//
-//    /* Set PE14 and PE15*/
-//    GPIOE->BSRR = BSRR_VAL;
-//    /* Reset PE14 and PE15 */
-//    GPIOE->BRR = BSRR_VAL;
-//
-//    /* Set PE14 and PE15 */
-//    GPIOE->BSRR = BSRR_VAL;
-//    /* Reset PE14 and PE15 */
-//    GPIOE->BRR = BSRR_VAL;
-//
-//    /* Set PE14 and PE15 */
-//    GPIOE->BSRR = BSRR_VAL;
-//    /* Reset PC0 and PC1 */
-//    GPIOE->BRR = BSRR_VAL;
-//
-//    /* Set PE14 and PE15 */
-//    GPIOE->BSRR = BSRR_VAL;
-//    /* Reset PE14 and PE15 */
-//    GPIOE->BRR = BSRR_VAL;
-  }
+/**
+  * @brief  Inserts a delay time.
+  * @param  nTime: specifies the delay time length, in 10 ms.
+  * @retval None
+  */
+void Delay(__IO uint32_t nTime)
+{
+  TimingDelay = nTime;
+
+  while(TimingDelay != 0);
 }
 
 #ifdef  USE_FULL_ASSERT
@@ -150,13 +70,3 @@ void assert_failed(uint8_t* file, uint32_t line)
   }
 }
 #endif
-
-/**
-  * @}
-  */
-
-/**
-  * @}
-  */
-
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
