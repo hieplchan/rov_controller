@@ -1,11 +1,11 @@
 .\demo\system_stm32f30x.o: ..\system_stm32f30x.c
 .\demo\system_stm32f30x.o: .\..\..\..\Libraries\CMSIS\Device\ST\STM32F30x\Include\stm32f30x.h
-.\demo\system_stm32f30x.o: C:\Users\hiepl\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include\core_cm4.h
-.\demo\system_stm32f30x.o: D:\Installed\KeilC\ARM\ARMCC\Bin\..\include\stdint.h
-.\demo\system_stm32f30x.o: C:\Users\hiepl\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include\cmsis_version.h
-.\demo\system_stm32f30x.o: C:\Users\hiepl\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include\cmsis_compiler.h
-.\demo\system_stm32f30x.o: C:\Users\hiepl\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include\cmsis_armcc.h
-.\demo\system_stm32f30x.o: C:\Users\hiepl\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include\mpu_armv7.h
+.\demo\system_stm32f30x.o: D:\Installed\MDK-ARM\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include\core_cm4.h
+.\demo\system_stm32f30x.o: D:\Installed\MDK-ARM\ARM\ARMCC\Bin\..\include\stdint.h
+.\demo\system_stm32f30x.o: D:\Installed\MDK-ARM\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include\cmsis_version.h
+.\demo\system_stm32f30x.o: D:\Installed\MDK-ARM\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include\cmsis_compiler.h
+.\demo\system_stm32f30x.o: D:\Installed\MDK-ARM\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include\cmsis_armcc.h
+.\demo\system_stm32f30x.o: D:\Installed\MDK-ARM\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include\mpu_armv7.h
 .\demo\system_stm32f30x.o: .\..\..\..\Libraries\CMSIS\Device\ST\STM32F30x\Include\system_stm32f30x.h
 .\demo\system_stm32f30x.o: .\..\stm32f30x_conf.h
 .\demo\system_stm32f30x.o: .\..\..\..\Libraries\STM32F30x_StdPeriph_Driver\inc\stm32f30x_adc.h

@@ -1,12 +1,12 @@
 .\demo\stm32f30x_it.o: ..\stm32f30x_it.c
 .\demo\stm32f30x_it.o: ..\stm32f30x_it.h
 .\demo\stm32f30x_it.o: .\..\..\..\Libraries\CMSIS\Device\ST\STM32F30x\Include\stm32f30x.h
-.\demo\stm32f30x_it.o: C:\Users\hiepl\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include\core_cm4.h
-.\demo\stm32f30x_it.o: D:\Installed\KeilC\ARM\ARMCC\Bin\..\include\stdint.h
-.\demo\stm32f30x_it.o: C:\Users\hiepl\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include\cmsis_version.h
-.\demo\stm32f30x_it.o: C:\Users\hiepl\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include\cmsis_compiler.h
-.\demo\stm32f30x_it.o: C:\Users\hiepl\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include\cmsis_armcc.h
-.\demo\stm32f30x_it.o: C:\Users\hiepl\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include\mpu_armv7.h
+.\demo\stm32f30x_it.o: D:\Installed\MDK-ARM\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include\core_cm4.h
+.\demo\stm32f30x_it.o: D:\Installed\MDK-ARM\ARM\ARMCC\Bin\..\include\stdint.h
+.\demo\stm32f30x_it.o: D:\Installed\MDK-ARM\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include\cmsis_version.h
+.\demo\stm32f30x_it.o: D:\Installed\MDK-ARM\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include\cmsis_compiler.h
+.\demo\stm32f30x_it.o: D:\Installed\MDK-ARM\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include\cmsis_armcc.h
+.\demo\stm32f30x_it.o: D:\Installed\MDK-ARM\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Include\mpu_armv7.h
 .\demo\stm32f30x_it.o: .\..\..\..\Libraries\CMSIS\Device\ST\STM32F30x\Include\system_stm32f30x.h
 .\demo\stm32f30x_it.o: .\..\stm32f30x_conf.h
 .\demo\stm32f30x_it.o: .\..\..\..\Libraries\STM32F30x_StdPeriph_Driver\inc\stm32f30x_adc.h
@@ -34,7 +34,7 @@
 .\demo\stm32f30x_it.o: .\..\..\..\Libraries\STM32F30x_StdPeriph_Driver\inc\stm32f30x_misc.h
 .\demo\stm32f30x_it.o: ..\main.h
 .\demo\stm32f30x_it.o: .\..\..\..\Utilities\STM32F3_Discovery\stm32f3_discovery.h
-.\demo\stm32f30x_it.o: D:\Installed\KeilC\ARM\ARMCC\Bin\..\include\stdio.h
+.\demo\stm32f30x_it.o: D:\Installed\MDK-ARM\ARM\ARMCC\Bin\..\include\stdio.h
 .\demo\stm32f30x_it.o: .\..\..\..\Utilities\STM32F3_Discovery\stm32f3_discovery_lsm303dlhc.h
 .\demo\stm32f30x_it.o: .\..\..\..\Utilities\STM32F3_Discovery\stm32f3_discovery_l3gd20.h
 .\demo\stm32f30x_it.o: .\..\..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_lib.h
@@ -50,5 +50,5 @@
 .\demo\stm32f30x_it.o: .\..\..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_int.h
 .\demo\stm32f30x_it.o: ..\usb_pwr.h
 .\demo\stm32f30x_it.o: ..\platform_config.h
-.\demo\stm32f30x_it.o: D:\Installed\KeilC\ARM\ARMCC\Bin\..\include\math.h
+.\demo\stm32f30x_it.o: D:\Installed\MDK-ARM\ARM\ARMCC\Bin\..\include\math.h
 .\demo\stm32f30x_it.o: ..\usb_istr.h
