@@ -99,17 +99,13 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+    HAL_GPIO_TogglePin(LD4_GPIO_Port, LD4_Pin);
+    HAL_Delay(500);
+    button_state = HAL_GPIO_ReadPin(B1_GPIO_Port, B1_Pin);
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-    // HAL_GPIO_TogglePin(LD4_GPIO_Port, LD4_Pin);
-    button_state = HAL_GPIO_ReadPin(B1_GPIO_Port, B1_Pin);
-    // uint32_t nTimer = 10000000;
-    // while (nTimer > 0)
-    // {
-    //   --nTimer;
-    // }
-    // HAL_Delay(500);
   }
   /* USER CODE END 3 */
 }
