@@ -95,7 +95,6 @@ int main(void)
   /* USER CODE BEGIN 2 */
 
   PCA9685_Init(&hi2c2, PCA9685_ADDRESS);
-  PCA9685_PWM(&hi2c2, PCA9685_ADDRESS, 0, 0, 4095);
 
   /* USER CODE END 2 */
 
@@ -103,9 +102,11 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    HAL_GPIO_TogglePin(LD4_GPIO_Port, LD4_Pin);
+    
     HAL_Delay(500);
+    HAL_GPIO_TogglePin(LD4_GPIO_Port, LD4_Pin);
     button_state = HAL_GPIO_ReadPin(B1_GPIO_Port, B1_Pin);
+    PCA9685_PWM(&hi2c2, PCA9685_ADDRESS, 0, 0, 4095);
 
     /* USER CODE END WHILE */
 
