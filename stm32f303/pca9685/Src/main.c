@@ -105,6 +105,34 @@ int main(void)
 
     /* USER CODE END WHILE */
 
+    // PCA9685 Init Block
+
+    uint8_t initStruct[2];
+    HAL_I2C_Master_Transmit(&hi2c2, PCA9685_ADDRESS, PCA9685_MODE1, 1, 1);
+    uint8_t oldmode = 0;
+    uint8_t newmode = ((oldmode & 0x7F) | 0x10); // sleep
+    initStruct[0] = PCA9685_MODE1;
+    initStruct[1] = newmode; // go to sleep, turn off internal oscillator
+
+    // This sets both the SLEEP and EXTCLK bits of the MODE1 register to switch to
+    // use the external clock
+    HAL_I2C_Master_Transmit(&hi2c2, PCA9685_ADDRESS, initStruct, 2, 1);
+
+    // set the prescaler
+    initStruct[1] = PCA9685_PRESCALE;
+    HAL_I2C_Master_Transmit(&hi2c2, PCA9685_ADDRESS, initStruct, 2, 1);
+
+    initStruct[1] = oldmode;
+    HAL_I2C_Master_Transmit(&hi2c2, PCA9685_ADDRESS, initStruct, 2, 1);
+
+    HAL_Delay(5);
+
+    // clear the SLEEP bit to start
+    initStruct[1] = (oldmode | 0xA1);
+    HAL_I2C_Master_Transmit(&hi2c2, PCA9685_ADDRESS, initStruct, 2, 1);
+
+    // End PCA9685 Init Block
+
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
