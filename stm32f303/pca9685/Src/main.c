@@ -45,6 +45,7 @@
 I2C_HandleTypeDef hi2c2;
 
 /* USER CODE BEGIN PV */
+GPIO_PinState button_state = GPIO_PIN_SET;
 
 /* USER CODE END PV */
 
@@ -92,7 +93,6 @@ int main(void)
   MX_GPIO_Init();
   MX_I2C2_Init();
   /* USER CODE BEGIN 2 */
-
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -102,12 +102,14 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-    HAL_GPIO_TogglePin(LD4_GPIO_Port, LD4_Pin);
-    uint32_t nTimer = 10000000;
-    while (nTimer > 0)
-    {
-      --nTimer;
-    }
+    // HAL_GPIO_TogglePin(LD4_GPIO_Port, LD4_Pin);
+    button_state = HAL_GPIO_ReadPin(B1_GPIO_Port, B1_Pin);
+    // uint32_t nTimer = 10000000;
+    // while (nTimer > 0)
+    // {
+    //   --nTimer;
+    // }
+    // HAL_Delay(500);
   }
   /* USER CODE END 3 */
 }
