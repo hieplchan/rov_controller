@@ -33,6 +33,8 @@ extern "C" {
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
+#include "pca9685.h"
+
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
@@ -117,6 +119,11 @@ void Error_Handler(void);
 #define MEMS_INT2_Pin GPIO_PIN_1
 #define MEMS_INT2_GPIO_Port GPIOE
 /* USER CODE BEGIN Private defines */
+
+#define I2C2_SCL_Pin GPIO_PIN_9
+#define I2C2_SCL_GPIO_Port GPIOA
+#define I2C2_SDA_Pin GPIO_PIN_10
+#define I2C2_SDA_GPIO_Port GPIOA
 
 /* USER CODE END Private defines */
 

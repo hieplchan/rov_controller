@@ -100,7 +100,7 @@ int main(void)
   while (1)
   {
     HAL_GPIO_TogglePin(LD4_GPIO_Port, LD4_Pin);
-    HAL_Delay(500);
+    HAL_Delay(100);
     button_state = HAL_GPIO_ReadPin(B1_GPIO_Port, B1_Pin);
 
     /* USER CODE END WHILE */
