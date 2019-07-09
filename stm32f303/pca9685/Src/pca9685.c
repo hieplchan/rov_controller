@@ -27,8 +27,25 @@ void PCA9685_Init(I2C_HandleTypeDef *hi2c, uint8_t address)
   HAL_I2C_Master_Transmit(hi2c, address, initStruct, 2, 1);
 }
 
-void PCA9685_PWM(I2C_HandleTypeDef *hi2c, uint8_t address, uint8_t num, uint16_t on, uint16_t off)
+void PCA9685_Reset(I2C_HandleTypeDef *hi2c, uint8_t address)
 {
- uint8_t outputBuffer[5] = {0x06 + 4*num, on, (on >> 8), off, (off >> 8)};
+
+}
+
+/*!
+ *  @brief  Sets the PWM frequency for the entire chip, up to ~1.6 KHz
+ *  @param  freq Floating point frequency that we will attempt to match
+ */
+void PCA9685_SetPWMFrequency(I2C_HandleTypeDef *hi2c, uint8_t address, float frequency)
+{
+  float prescaleval = 25000000;
+  prescaleval /= 4096;
+  prescaleval /= frequency;
+  prescaleval -= 1;
+}
+
+void PCA9685_SetChannelPWM(I2C_HandleTypeDef *hi2c, uint8_t address, uint8_t channel, uint16_t on, uint16_t off)
+{
+ uint8_t outputBuffer[5] = {0x06 + 4*channel, on, (on >> 8), off, (off >> 8)};
  HAL_I2C_Master_Transmit(hi2c, address, outputBuffer, 5, 1);
 }
