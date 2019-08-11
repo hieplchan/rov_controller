@@ -3,10 +3,10 @@
 void PCA9685_Init(I2C_HandleTypeDef *hi2c, uint8_t address)
 {
   uint8_t initStruct[2];
-  HAL_I2C_Master_Transmit(hi2c, address, PCA9685_MODE1, 1, 1);
+  HAL_I2C_Master_Transmit(hi2c, address, PCA9685_REG_MODE1, 1, 1);
   uint8_t oldmode = 0;
   uint8_t newmode = ((oldmode & 0x7F) | 0x10); // sleep
-  initStruct[0] = PCA9685_MODE1;
+  initStruct[0] = PCA9685_REG_MODE1;
   initStruct[1] = newmode; // go to sleep, turn off internal oscillator
 
   // This sets both the SLEEP and EXTCLK bits of the MODE1 register to switch to
@@ -14,7 +14,7 @@ void PCA9685_Init(I2C_HandleTypeDef *hi2c, uint8_t address)
   HAL_I2C_Master_Transmit(hi2c, address, initStruct, 2, 1);
 
   // set the prescaler
-  initStruct[1] = PCA9685_PRESCALE;
+  initStruct[1] = PCA9685_REG_PRESCALE;
   HAL_I2C_Master_Transmit(hi2c, address, initStruct, 2, 1);
 
   initStruct[1] = oldmode;
