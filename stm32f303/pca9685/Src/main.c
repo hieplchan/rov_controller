@@ -59,9 +59,7 @@ static void MX_I2C2_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
-HAL_StatusTypeDef pca9685_flag;
-
+uint8_t prescale_test = 0xFF;
 /* USER CODE END 0 */
 
 /**
@@ -97,14 +95,14 @@ int main(void)
   /* USER CODE BEGIN 2 */
 
   // PCA9685 I2C Test for ready
-  HAL_Delay(500);
-	pca9685_flag = HAL_BUSY;
-	pca9685_flag = PCA9685_I2C_Test(&hi2c2, PCA9685_ADDRESS);
-	if (pca9685_flag != HAL_OK)
+  HAL_Delay(10);
+	if (HAL_I2C_IsDeviceReady(&hi2c2, PCA9685_ADDRESS, 10, 1) != HAL_OK)
 	{
 		HAL_GPIO_TogglePin(LD4_GPIO_Port, LD5_Pin);
 	}
-	
+  PCA9685_Init(&hi2c2, PCA9685_ADDRESS, PCA9685_FREQUENCY);
+  HAL_I2C_Mem_Read(&hi2c2, PCA9685_ADDRESS, PCA9685_REG_PRESCALE, 1, &prescale_test, 1, 1);
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
