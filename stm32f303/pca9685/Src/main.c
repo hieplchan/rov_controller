@@ -60,6 +60,8 @@ static void MX_I2C2_Init(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
+HAL_StatusTypeDef pca9685_flag;
+
 /* USER CODE END 0 */
 
 /**
@@ -94,19 +96,26 @@ int main(void)
   MX_I2C2_Init();
   /* USER CODE BEGIN 2 */
 
-  PCA9685_Init(&hi2c2, PCA9685_ADDRESS);
-
+  // PCA9685 I2C Test for ready
+  HAL_Delay(500);
+	pca9685_flag = HAL_BUSY;
+	pca9685_flag = PCA9685_I2C_Test(&hi2c2, PCA9685_ADDRESS);
+	if (pca9685_flag != HAL_OK)
+	{
+		HAL_GPIO_TogglePin(LD4_GPIO_Port, LD5_Pin);
+	}
+	
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    
+
+    // GPIO Testing code
     HAL_Delay(500);
     HAL_GPIO_TogglePin(LD4_GPIO_Port, LD4_Pin);
     button_state = HAL_GPIO_ReadPin(B1_GPIO_Port, B1_Pin);
-    PCA9685_SetChannelPWM(&hi2c2, PCA9685_ADDRESS, 0, 0, 4095);
 
     /* USER CODE END WHILE */
 

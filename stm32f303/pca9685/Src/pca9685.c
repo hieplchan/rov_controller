@@ -1,5 +1,19 @@
 #include "pca9685.h"
 
+HAL_StatusTypeDef PCA9685_I2C_Test(I2C_HandleTypeDef *hi2c, uint8_t address)
+{
+  HAL_StatusTypeDef i2c_state;
+  uint8_t i2c_data = 0xFF;
+
+  i2c_state = HAL_I2C_IsDeviceReady(hi2c, 0x80, 10, 1);
+  i2c_state = HAL_I2C_Master_Transmit(hi2c, 0x80, &address, 1, 1);
+  i2c_state = HAL_I2C_Master_Receive(hi2c, 0x80, &address, 1, 1);
+  i2c_state = HAL_I2C_Mem_Read(hi2c, 0x80, address, 1, &i2c_data, 1, 1);
+  i2c_state = HAL_I2C_Mem_Write(hi2c, 0x80, address, 1, &i2c_data, 1, 1);
+
+  return i2c_state;
+}
+
 void PCA9685_Init(I2C_HandleTypeDef *hi2c, uint8_t address)
 {
   uint8_t initStruct[2];
