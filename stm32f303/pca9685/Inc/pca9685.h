@@ -8,4 +8,4 @@
 
 uint8_t Prescale_Calculate(float frequency);
 void PCA9685_Init(I2C_HandleTypeDef *hi2c, uint8_t DevAddress, float Frequency);
-void PCA9685_SetChannelPWM(I2C_HandleTypeDef *hi2c, uint8_t address, uint8_t channel, uint16_t on, uint16_t off);
+uint8_t PCA9685_SetChannelPWM(I2C_HandleTypeDef *hi2c, uint8_t DevAddress, uint8_t Channel, uint16_t On, uint16_t Off);

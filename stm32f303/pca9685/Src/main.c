@@ -60,6 +60,7 @@ static void MX_I2C2_Init(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 uint8_t prescale_test = 0xFF;
+uint16_t off_value = 0;
 /* USER CODE END 0 */
 
 /**
@@ -94,14 +95,21 @@ int main(void)
   MX_I2C2_Init();
   /* USER CODE BEGIN 2 */
 
-  // PCA9685 I2C Test for ready
+  /* PCA9685 INITIALIZE BEGIN */
   HAL_Delay(10);
+  HAL_GPIO_WritePin(LD4_GPIO_Port, LD5_Pin, GPIO_PIN_RESET);
 	if (HAL_I2C_IsDeviceReady(&hi2c2, PCA9685_ADDRESS, 10, 1) != HAL_OK)
 	{
-		HAL_GPIO_TogglePin(LD4_GPIO_Port, LD5_Pin);
+		HAL_GPIO_WritePin(LD4_GPIO_Port, LD5_Pin, GPIO_PIN_SET);
 	}
   PCA9685_Init(&hi2c2, PCA9685_ADDRESS, PCA9685_FREQUENCY);
   HAL_I2C_Mem_Read(&hi2c2, PCA9685_ADDRESS, PCA9685_REG_PRESCALE, 1, &prescale_test, 1, 1);
+  if (prescale_test != Prescale_Calculate(PCA9685_FREQUENCY))
+  {
+    HAL_GPIO_WritePin(LD4_GPIO_Port, LD5_Pin, GPIO_PIN_SET);
+  }
+  // PCA9685_SetChannelPWM(&hi2c2, PCA9685_ADDRESS, 7, 0, 0);
+  /* PCA9685 INITIALIZE END */
 
   /* USER CODE END 2 */
 
@@ -109,12 +117,15 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-
     // GPIO Testing code
-    HAL_Delay(500);
+    HAL_Delay(1000);
     HAL_GPIO_TogglePin(LD4_GPIO_Port, LD4_Pin);
     button_state = HAL_GPIO_ReadPin(B1_GPIO_Port, B1_Pin);
 
+    if (PCA9685_SetChannelPWM(&hi2c2, PCA9685_ADDRESS, 7, 0, off_value) != 1)
+    {
+      HAL_GPIO_WritePin(LD4_GPIO_Port, LD5_Pin, GPIO_PIN_SET);
+    }
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
