@@ -33,16 +33,20 @@ void PCA9685_Init(I2C_HandleTypeDef *hi2c, uint8_t DevAddress, float Frequency)
   HAL_I2C_Mem_Write(hi2c, DevAddress, PCA9685_REG_PRESCALE, 1, &prescale, 1, 1);
 }
 
-uint8_t PCA9685_SetChannelPWM(I2C_HandleTypeDef *hi2c, uint8_t DevAddress, uint8_t Channel, uint16_t On, uint16_t Off)
+void PCA9685_SetChannelPWM(I2C_HandleTypeDef *hi2c, uint8_t DevAddress, uint8_t Channel, uint16_t On, uint16_t Off)
 {
   // LED0_ON_L REG address start from 0x06 - ON (LOW, HIGH) - OFF (LOW, HIGH) is 4 bytes
-  uint8_t buffer[5] = {0x06 + 4*Channel, On, (On >> 8), Off, (Off >> 8)};
-  if (HAL_I2C_Master_Transmit(hi2c, DevAddress, buffer, 5, 1) == HAL_OK)
-  {
-    return 1;
-  }
-  else
-  {
-    return 0;
-  }
+  uint8_t reg_on_low = PCA9685_REG_LED0_ON_L + Channel*4;
+  uint8_t reg_on_high = PCA9685_REG_LED0_ON_L + Channel*4 + 1;
+  uint8_t reg_off_low = PCA9685_REG_LED0_ON_L + Channel*4 + 2;
+  uint8_t reg_off_high = PCA9685_REG_LED0_ON_L + Channel*4 + 3;
+
+  uint8_t on_low = On & 0xFF;
+  uint8_t on_high = (On >> 8) & 0xFF;
+  uint8_t off_low =  Off & 0xFF;
+  uint8_t off_high = (Off >> 8) & 0xFF;
+  HAL_I2C_Mem_Write(hi2c, DevAddress, reg_on_low, 1, &on_low, 1, 1);
+  HAL_I2C_Mem_Write(hi2c, DevAddress, reg_on_high, 1, &on_high, 1, 1);
+  HAL_I2C_Mem_Write(hi2c, DevAddress, reg_off_low, 1, &off_low, 1, 1);
+  HAL_I2C_Mem_Write(hi2c, DevAddress, reg_off_high, 1, &off_high, 1, 1);
 }

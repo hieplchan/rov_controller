@@ -59,8 +59,18 @@ static void MX_I2C2_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-uint8_t prescale_test = 0xFF;
-uint16_t off_value = 0;
+uint8_t prescale_test = 0x00;
+uint16_t off_value = 205;
+
+uint8_t reg_on_low = PCA9685_REG_LED0_ON_L;
+uint8_t reg_on_high = PCA9685_REG_LED0_ON_L + 1;
+uint8_t reg_off_low = PCA9685_REG_LED0_ON_L + 2;
+uint8_t reg_off_high = PCA9685_REG_LED0_ON_L + 3;
+
+uint8_t on_low = 0;
+uint8_t on_high = 0;
+uint8_t off_low = 0;
+uint8_t off_high = 0;
 /* USER CODE END 0 */
 
 /**
@@ -102,13 +112,18 @@ int main(void)
 	{
 		HAL_GPIO_WritePin(LD4_GPIO_Port, LD5_Pin, GPIO_PIN_SET);
 	}
+  HAL_Delay(10);
   PCA9685_Init(&hi2c2, PCA9685_ADDRESS, PCA9685_FREQUENCY);
-  HAL_I2C_Mem_Read(&hi2c2, PCA9685_ADDRESS, PCA9685_REG_PRESCALE, 1, &prescale_test, 1, 1);
+  if (HAL_I2C_Mem_Read(&hi2c2, PCA9685_ADDRESS, PCA9685_REG_PRESCALE, 1, &prescale_test, 1, 1) != HAL_OK)
+  {
+    HAL_GPIO_WritePin(LD4_GPIO_Port, LD5_Pin, GPIO_PIN_SET);
+  }
   if (prescale_test != Prescale_Calculate(PCA9685_FREQUENCY))
   {
     HAL_GPIO_WritePin(LD4_GPIO_Port, LD5_Pin, GPIO_PIN_SET);
   }
-  // PCA9685_SetChannelPWM(&hi2c2, PCA9685_ADDRESS, 7, 0, 0);
+
+
   /* PCA9685 INITIALIZE END */
 
   /* USER CODE END 2 */
@@ -122,10 +137,17 @@ int main(void)
     HAL_GPIO_TogglePin(LD4_GPIO_Port, LD4_Pin);
     button_state = HAL_GPIO_ReadPin(B1_GPIO_Port, B1_Pin);
 
-    if (PCA9685_SetChannelPWM(&hi2c2, PCA9685_ADDRESS, 7, 0, off_value) != 1)
+    if (button_state == 1)
     {
-      HAL_GPIO_WritePin(LD4_GPIO_Port, LD5_Pin, GPIO_PIN_SET);
+      off_value += 10;
+      PCA9685_SetChannelPWM(&hi2c2, PCA9685_ADDRESS, 0, 0, off_value);
+      HAL_Delay(10);
+      HAL_I2C_Mem_Read(&hi2c2, PCA9685_ADDRESS, reg_on_low, 1, &on_low, 1, 1);
+      HAL_I2C_Mem_Read(&hi2c2, PCA9685_ADDRESS, reg_on_high, 1, &on_high, 1, 1);
+      HAL_I2C_Mem_Read(&hi2c2, PCA9685_ADDRESS, reg_off_low, 1, &off_low, 1, 1);
+      HAL_I2C_Mem_Read(&hi2c2, PCA9685_ADDRESS, reg_off_high, 1, &off_high, 1, 1);
     }
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
