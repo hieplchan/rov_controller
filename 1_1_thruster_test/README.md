@@ -1,4 +1,4 @@
-# Make & test: thruster (BLDC Motor + ESC) & propeller (3D printed)
+# Make & test: thruster & propeller
 <p align="center">
   <img src="img/forward.gif" width="50%">
 </p>
