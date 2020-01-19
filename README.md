@@ -5,5 +5,5 @@
 - Reference Thesis & Paper: https://drive.google.com/open?id=1JWmoIX4droevFmF02EoJKx6fEaLvNX2j
 
 # 2. Tutorial
-1. **Thruster**
-1.1 Make & test: thruster (BLDC Motor + ESC) & propeller (3D printed)
+1. **Thruster**  
+1.1 Make & test: thruster (BLDC Motor + ESC) & propeller (3D printed)  
