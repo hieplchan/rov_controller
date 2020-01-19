@@ -1,5 +1,6 @@
 # Make & test: thruster (BLDC Motor + ESC) & propeller (3D printed)
-- Result link: https://drive.google.com/drive/folders/1bj1_dH10hAmU38G_orfcFDWGFbDov-SK?usp=sharing
+- **Result link:** https://drive.google.com/drive/folders/1bj1_dH10hAmU38G_orfcFDWGFbDov-SK?usp=sharing
+
 # 1. BOM
 | Quantity |                      Name                       |      Link     |
 | :-------:|-------------------------------------------------| --------------|
@@ -20,4 +21,9 @@
 - Use 90mm plastic pipe & cap to protect the propeller like picture below
 <p align="center">
   <img src="https://drive.google.com/uc?export=view&id=1Iknp3wVl-vjtJTEsAQq-7NKp1bYaIKK9" width="40%">
+</p>
+
+## 2.2 Wire diagram
+<p align="center">
+  <img src="img/wire_diagram.jpg" width="70%">
 </p>
