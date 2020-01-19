@@ -18,4 +18,4 @@
 ## 2.1 Mechanical
 - Use `3d_model/thruster/propeller.STL` to 3D print the propeller **(ABS - infill: 100%)**
 - Use 90mm plastic pipe & cap to protect the propeller like picture below
-![Propeller protector](https://drive.google.com/uc?export=view&id=1Iknp3wVl-vjtJTEsAQq-7NKp1bYaIKK9)
+<img src="https://drive.google.com/uc?export=view&id=1Iknp3wVl-vjtJTEsAQq-7NKp1bYaIKK9" width="40%">
