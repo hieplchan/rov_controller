@@ -1,3 +1,0 @@
-% $Revision: 1.1 $
-Do not delete this file! It is used for 
-detecting image file changes.
