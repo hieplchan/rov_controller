@@ -1,5 +1,9 @@
 # Make & test: thruster (BLDC Motor + ESC) & propeller (3D printed)
-- **Result link:** https://drive.google.com/drive/folders/1bj1_dH10hAmU38G_orfcFDWGFbDov-SK?usp=sharing
+<p align="center">
+  <img src="img/forward.gif" width="50%">
+</p>
+
+- **More Test Result:** https://drive.google.com/drive/folders/1bj1_dH10hAmU38G_orfcFDWGFbDov-SK?usp=sharing
 
 # 1. BOM
 | Quantity |                      Name                       |      Link     |
@@ -12,12 +16,12 @@
 | 1        | 90mm plastic pipe                               | https://quythanhan.com/san-pham/ong-upvc-90-binh-minh-8.html              |
 | 1        | 90mm Cap                                        | https://nhuadenhat.net/nut-bit-upvc-de-nhat              |
 
-- ESC Manual: https://cdn-global-hk.hobbyking.com/media/file/750066771X177509X21.pdf
+- **ESC Manual:** https://cdn-global-hk.hobbyking.com/media/file/750066771X177509X21.pdf
 - Note: I use PROPDRIVE **2836 750KV** for test **(deprecated now)** - you can use **2836** 1000KV.
 
 # 2. Step by step
 ## 2.1 Mechanical
-- Use `3d_model/thruster/propeller.STL` to 3D print the propeller **(ABS - infill: 100%)**
+- Use **`3d_model/thruster/propeller.STL`** to 3D print the propeller **(ABS - infill: 100%)**
 - Use 90mm plastic pipe & cap to protect the propeller like picture below
 <p align="center">
   <img src="https://drive.google.com/uc?export=view&id=1Iknp3wVl-vjtJTEsAQq-7NKp1bYaIKK9" width="40%">
@@ -27,3 +31,16 @@
 <p align="center">
   <img src="img/wire_diagram.jpg" width="70%">
 </p>
+
+## 2.3 Config ESC
+- Using [ESC Manual](https://cdn-global-hk.hobbyking.com/media/file/750066771X177509X21.pdf) to config:
+  - Run mode: **bi-directional** (forward & backward)
+  - Reverse force: **100%**
+  - Setting throttle range: **max & min** position of RC servo test circuit
+
+## 2.4 Run thruster on water
+- Testing max force of forward & reverse
+- Warning: do not use max throttle of both direction too long, may cause overheat.
+
+# 3. Result
+- Force of thruster is good, you can see video in **[result link](https://drive.google.com/drive/folders/1bj1_dH10hAmU38G_orfcFDWGFbDov-SK?usp=sharing)**
