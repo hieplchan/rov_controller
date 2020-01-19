@@ -6,4 +6,4 @@
 
 # 2. Tutorial
 1. **Thruster**  
-1.1 Make & test thruster - result :https://drive.google.com/drive/folders/1bj1_dH10hAmU38G_orfcFDWGFbDov-SK?usp=sharing
+1.1 Make & test thruster - [result link](https://drive.google.com/drive/folders/1bj1_dH10hAmU38G_orfcFDWGFbDov-SK?usp=sharing)
