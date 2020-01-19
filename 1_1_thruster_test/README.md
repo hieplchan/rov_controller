@@ -12,6 +12,10 @@
 | 1        | 90mm Cap                                        | https://nhuadenhat.net/nut-bit-upvc-de-nhat              |
 
 - ESC Manual: https://cdn-global-hk.hobbyking.com/media/file/750066771X177509X21.pdf
-- Note:
-  - I use PROPDRIVE **2836 750KV** for test **(deprecated now)** - you can use **2836** 1000KV.
-  - Use 90mm plastic pipe to protect the propeller
+- Note: I use PROPDRIVE **2836 750KV** for test **(deprecated now)** - you can use **2836** 1000KV.
+
+# 2. Step by step
+## 2.1 Mechanical
+- Use `3d_model/thruster/propeller.STL` to 3D print the propeller **(ABS - infill: 100%)**
+- Use 90mm plastic pipe & cap to protect the propeller like picture below
+![Propeller protector](https://drive.google.com/file/d/1Iknp3wVl-vjtJTEsAQq-7NKp1bYaIKK9/view?usp=sharing)
