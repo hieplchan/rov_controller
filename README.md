@@ -7,4 +7,4 @@
 - Result link: https://drive.google.com/drive/folders/1r-pMukkFeSxC1jLjiMX_b2Ytbz21CJB9?usp=sharing
 # 2. Tutorial
 1. **Thruster**  
-1.1 Make & test thruster - [result link](https://drive.google.com/drive/folders/1bj1_dH10hAmU38G_orfcFDWGFbDov-SK?usp=sharing)
+1.1 Make & test: thruster & propeller - [tutorial](https://github.com/hieplchan/rov_controller/tree/master/1_1_thruster_test) - [result link](https://drive.google.com/drive/folders/1bj1_dH10hAmU38G_orfcFDWGFbDov-SK?usp=sharing)
