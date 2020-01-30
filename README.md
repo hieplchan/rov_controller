@@ -8,4 +8,5 @@
 - Reference Thesis & Paper: https://drive.google.com/open?id=1JWmoIX4droevFmF02EoJKx6fEaLvNX2j
 # 2. Tutorial
 1. **Thruster**  
-1.1 Make & test: thruster & propeller - [tutorial](https://github.com/hieplchan/rov_controller/tree/master/1_1_thruster_test) - [result link](https://drive.google.com/drive/folders/1bj1_dH10hAmU38G_orfcFDWGFbDov-SK?usp=sharing)
+1.1 Making **underwater** thruster & propeller - **[tutorial](https://github.com/hieplchan/rov_controller/tree/master/1_1_thruster_test) - [result](https://drive.google.com/drive/folders/1bj1_dH10hAmU38G_orfcFDWGFbDov-SK?usp=sharing)**
+1.2 Control underwater thrusters with STM32 MCU & PCA9685 - **[tutorial]() - [result]()**

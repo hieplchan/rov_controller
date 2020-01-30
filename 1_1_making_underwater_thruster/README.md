@@ -1,4 +1,4 @@
-# Make & test: thruster & propeller
+# Making underwater thruster & propeller
 <p align="center">
   <img src="img/forward.gif" width="50%">
 </p>
