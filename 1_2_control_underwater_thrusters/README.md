@@ -18,7 +18,7 @@
 - STM32CubeF3 (follow image guide): https://www.st.com/en/embedded-software/stm32cubef3.html
 - STM Studio: https://www.st.com/en/development-tools/stm-studio-stm32.html
 <p align="center">
-  <img src="img/stm32cubef3_install.jpg" width="50%">
+  <img src="img/stm32cubef3_install.jpg" width="70%">
 </p>
 
 ## 2.2 Wire diagram
