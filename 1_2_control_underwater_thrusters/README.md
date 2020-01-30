@@ -21,9 +21,13 @@
   <img src="img/stm32cubef3_install.jpg" width="70%">
 </p>
 
-## 2.2 Wire diagram
 
-## 2.3 PCA9685 basic explained
+## 2.2 PCA9685 basic explained
+- Step 1: init (27Mhz)
+- Step 2: set prescale for 50MHz
+- Step 3: set output pwm on and off
+
+## 2.3 Wire diagram
 
 ## 2.4 Test single thruster
 
