@@ -6,16 +6,16 @@
  * The int.osc. for the PCA9685 chip is a range between about 23-27MHz
  */
 #define PCA9685_INTERNAL_FREQ       27000000
-#define PCA9685_ADDRESS 						0x40<<1 	// I2C 7bit address need to left shift - HAL_Driver specs
-#define PCA9685_REG_MODE1_ADDR 			0x00 			// Mode1 Register Address
-#define PCA9685_REG_PRESCALE_ADDR		0xFE 			// PRE_SCALE Register Address - prescaler for PWM output frequency
-#define PCA9685_REG_LED0_ON_L 			0x06
-#define PCA9685_PRESCALE_MIN 				3   			// minimum prescale value
-#define PCA9685_PRESCALE_MAX 				255 			// maximum prescale value
+#define PCA9685_ADDRESS             0x40<<1 	// I2C 7bit address need to left shift - HAL_Driver specs
+#define PCA9685_REG_MODE1_ADDR      0x00 			// Mode1 Register Address
+#define PCA9685_REG_PRESCALE_ADDR   0xFE 			// PRE_SCALE Register Address - prescaler for PWM output frequency
+#define PCA9685_REG_LED0_ON_L       0x06
+#define PCA9685_PRESCALE_MIN        3   			// minimum prescale value
+#define PCA9685_PRESCALE_MAX        255 			// maximum prescale value
 
 /* MODE1 */
-#define PCA9685_MODE1_SLEEP 	0x10    // Low power mode. Oscillator off
-#define PCA9685_MODE1_AI 			0x20    // Auto-Increment enabled
+#define PCA9685_MODE1_SLEEP   0x10    // Low power mode. Oscillator off
+#define PCA9685_MODE1_AI      0x20    // Auto-Increment enabled
 #define PCA9685_MODE1_RESTART 0x80    // Restart enabled
 
 /* SERVO MOTOR ESC */
@@ -35,4 +35,4 @@ HAL_StatusTypeDef PCA9685_Set_PWM_Freq(I2C_HandleTypeDef *hi2c, float Frequency)
 HAL_StatusTypeDef PCA9685_Set_PWM(I2C_HandleTypeDef *hi2c, uint8_t Channel, uint16_t On, uint16_t Off);
 
 /* Servo ESC Control functions  **************************************/
-HAL_StatusTypeDef Servo_Set_Throttle(I2C_HandleTypeDef *hi2c, uint8_t Channel, int8_t throttle);
+HAL_StatusTypeDef Servo_Set_Throttle(I2C_HandleTypeDef *hi2c, uint8_t Channel, int8_t Throttle);

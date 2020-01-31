@@ -19,10 +19,11 @@
 /* USER CODE END Header */
 
 /* Includes ------------------------------------------------------------------*/
-#include "main.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+
+#include "main.h"
 
 /* USER CODE END Includes */
 
@@ -45,7 +46,8 @@
 I2C_HandleTypeDef hi2c2;
 
 /* USER CODE BEGIN PV */
-GPIO_PinState button_state = GPIO_PIN_SET;
+
+int8_t servo_throttle = 0;
 
 /* USER CODE END PV */
 
@@ -59,8 +61,6 @@ static void MX_I2C2_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
-int8_t servo_throttle = 20;
 
 /* USER CODE END 0 */
 

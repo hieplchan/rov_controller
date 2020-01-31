@@ -16,6 +16,9 @@ HAL_StatusTypeDef PCA9685_Reset(I2C_HandleTypeDef *hi2c)
   }
 }
 
+/*!
+ *  @brief  Initialize PCA9685 chip over I2C
+ */
 HAL_StatusTypeDef PCA9685_Init(I2C_HandleTypeDef *hi2c)
 {
   // Check if device ready
@@ -35,7 +38,7 @@ HAL_StatusTypeDef PCA9685_Init(I2C_HandleTypeDef *hi2c)
  *  @brief  Sets the PWM output frequency, up to ~1.6 KHz
  *  output_freq = clock_freq/((prescale+1)*4096)
  *  clock_freq can be internal or external oscillator
- *  @param  frequency Floating point frequency that we will attempt to match
+ *  @param  Frequency Floating point frequency that we will attempt to match
  */
 HAL_StatusTypeDef PCA9685_Set_PWM_Freq(I2C_HandleTypeDef *hi2c, float Frequency)
 {
@@ -87,6 +90,12 @@ HAL_StatusTypeDef PCA9685_Set_PWM_Freq(I2C_HandleTypeDef *hi2c, float Frequency)
   return HAL_OK;
 }
 
+/*!
+ *  @brief  Sets the PWM output pulse
+ *  @param  Channel PCA9685 channel number (0-15)
+ *  @param  On High output pulse start (0-4095)
+ *  @param  Off Low output pulse start (0-4095)
+ */
 HAL_StatusTypeDef PCA9685_Set_PWM(I2C_HandleTypeDef *hi2c, uint8_t Channel, uint16_t On, uint16_t Off)
 {
 	if (On > 4095)
@@ -123,14 +132,19 @@ HAL_StatusTypeDef PCA9685_Set_PWM(I2C_HandleTypeDef *hi2c, uint8_t Channel, uint
   return HAL_OK;
 }
 
-HAL_StatusTypeDef Servo_Set_Throttle(I2C_HandleTypeDef *hi2c, uint8_t Channel, int8_t throttle)
+/*!
+ *  @brief  Sets the Servo throttle
+ *  @param  Channel PCA9685 channel number (0-15)
+ *  @param  Throttle Throttle percent (-100 - 100)
+ */
+HAL_StatusTypeDef Servo_Set_Throttle(I2C_HandleTypeDef *hi2c, uint8_t Channel, int8_t Throttle)
 {
-	if (throttle < -100)
-		throttle = -100;
-	if (throttle > 100)
-		throttle = 100;
+	if (Throttle < -100)
+		Throttle = -100;
+	if (Throttle > 100)
+		Throttle = 100;
 
-	uint16_t pulselen = SERVO_PULSE_NEUTRAL + throttle*(SERVO_PULSE_MAX - SERVO_PULSE_MIN)/200.0f;
+	uint16_t pulselen = SERVO_PULSE_NEUTRAL + Throttle*(SERVO_PULSE_MAX - SERVO_PULSE_MIN)/200.0f;
 	if (pulselen < SERVO_PULSE_MIN)
 		pulselen = SERVO_PULSE_MIN;
 	if (pulselen > SERVO_PULSE_MAX)
