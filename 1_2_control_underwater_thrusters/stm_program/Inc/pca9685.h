@@ -13,26 +13,26 @@
 #define PCA9685_PRESCALE_MIN 				3   			// minimum prescale value
 #define PCA9685_PRESCALE_MAX 				255 			// maximum prescale value
 
-// MODE1
-#define MODE1_ALLCAL 	0x01    // respond to LED All Call I2C-bus address
-#define MODE1_SUB3 		0x02    // respond to I2C-bus subaddress 3
-#define MODE1_SUB2 		0x04    // respond to I2C-bus subaddress 2
-#define MODE1_SUB1 		0x08    // respond to I2C-bus subaddress 1
-#define MODE1_SLEEP 	0x10    // Low power mode. Oscillator off
-#define MODE1_AI 			0x20    // Auto-Increment enabled
-#define MODE1_EXTCLK 	0x40    // Use EXTCLK pin clock
-#define MODE1_RESTART 0x80    // Restart enabled
-// MODE2
-#define MODE2_OUTNE_0 0x01    // Active LOW output enable input */
-#define MODE2_OUTNE_1 0x02    // Active LOW output enable input - high impedience */
-#define MODE2_OUTDRV 	0x04    // totem pole structure vs open-drain */
-#define MODE2_OCH 		0x08    // Outputs change on ACK vs STOP */
-#define MODE2_INVRT 	0x10    // Output logic state inverted */
+/* MODE1 */
+#define PCA9685_MODE1_SLEEP 	0x10    // Low power mode. Oscillator off
+#define PCA9685_MODE1_AI 			0x20    // Auto-Increment enabled
+#define PCA9685_MODE1_RESTART 0x80    // Restart enabled
 
-// ESC
-#define ESC_FREQ 			50      // Output frequency, normal ESC ~ 50Hz
+/* SERVO MOTOR ESC */
+#define SERVO_FREQ          50    // Output frequency, normal ESC ~ 50Hz
+#define SERVO_MSMIN         1     // rounded 'minimum' millisecond length
+#define SERVO_MSMAX         2     // rounded 'maximum' millisecond length
+#define SERVO_PULSE_MIN     205   // 'minimum' pulse length count SERVO_MSMIN/(1000 (ms)/SERVO_FREQ/4096 (pulse resolution))
+#define SERVO_PULSE_MAX     410   // 'maximum' pulse length count SERVO_MSMAX/(1000 (ms)/SERVO_FREQ/4096 (pulse resolution))
+#define SERVO_PULSE_NEUTRAL 308   // 'maximum' pulse length count SERVO_MSMAX/(1000 (ms)/SERVO_FREQ/4096 (pulse resolution))
+#define SERVO_THROTTLE_MIN  -100  // 'minimum' throttle -100% (reverse)
+#define SERVO_THROTTLE_MAX  100   // 'maximum' throttle 100% (forward)
 
+/* PCA9685 functions  ************************************************/
 HAL_StatusTypeDef PCA9685_Reset(I2C_HandleTypeDef *hi2c);
 HAL_StatusTypeDef PCA9685_Init(I2C_HandleTypeDef *hi2c);
 HAL_StatusTypeDef PCA9685_Set_PWM_Freq(I2C_HandleTypeDef *hi2c, float Frequency);
 HAL_StatusTypeDef PCA9685_Set_PWM(I2C_HandleTypeDef *hi2c, uint8_t Channel, uint16_t On, uint16_t Off);
+
+/* Servo ESC Control functions  **************************************/
+HAL_StatusTypeDef Servo_Set_Throttle(I2C_HandleTypeDef *hi2c, uint8_t Channel, int8_t throttle);

@@ -1,4 +1,4 @@
-# Control single underwater thruster with STM32 MCU & PCA9685
+# Control underwater thrusters with STM32 MCU & PCA9685
 
 # 1. BOM
 | Quantity |                      Name                       |      Link     |
@@ -14,23 +14,19 @@
 # 2. Step by step
 ## 2.1 Install necessary software
 - MDK v5 (Free Lite with 32K code size is enough): http://www2.keil.com/mdk5/install/
-- STM32CubeMX (need to create free ST account): https://www.st.com/en/development-tools/stm32cubemx.html
-- STM32CubeF3 (follow image guide): https://www.st.com/en/embedded-software/stm32cubef3.html
 - STM Studio: https://www.st.com/en/development-tools/stm-studio-stm32.html
-<p align="center">
-  <img src="img/stm32cubef3_install.jpg" width="70%">
-</p>
 
+## 2.2 Wire diagram
 
-## 2.2 PCA9685 basic explained
+## 2.3 ESC explained
 - Step 1: init (27Mhz)
 - Step 2: set prescale for 50MHz
 - Step 3: set output pwm on and off
 
-## 2.3 Wire diagram
+## 2.4 PCA9685 explained
 
-## 2.4 Test single thruster
+## 2.5 Test single thruster
 
-## 2.5 Test multiple thruster
+## 2.6 Test multiple thruster
 
 # 3. Result

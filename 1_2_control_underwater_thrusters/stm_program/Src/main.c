@@ -59,21 +59,9 @@ static void MX_I2C2_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-uint8_t prescale_test = 0x00;
-uint16_t off_value = 205;
 
-uint8_t reg_on_low = PCA9685_REG_LED0_ON_L;
-uint8_t reg_on_high = PCA9685_REG_LED0_ON_L + 1;
-uint8_t reg_off_low = PCA9685_REG_LED0_ON_L + 2;
-uint8_t reg_off_high = PCA9685_REG_LED0_ON_L + 3;
+int8_t servo_throttle = 20;
 
-uint8_t on_low = 0;
-uint8_t on_high = 0;
-uint8_t off_low = 0;
-uint8_t off_high = 0;
-
-HAL_StatusTypeDef chech_value;
-uint8_t chech_prescale = 0x00;
 /* USER CODE END 0 */
 
 /**
@@ -106,25 +94,19 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_I2C2_Init();
+
   /* USER CODE BEGIN 2 */
 
+  /* Initialize PCA9685 */
   if (PCA9685_Init(&hi2c2) != HAL_OK)
   {
     HAL_GPIO_WritePin(LD4_GPIO_Port, LD5_Pin, GPIO_PIN_SET);
   }
 
-  if (PCA9685_Set_PWM_Freq(&hi2c2, 50) != HAL_OK)
+  if (PCA9685_Set_PWM_Freq(&hi2c2, SERVO_FREQ) != HAL_OK)
   {
     HAL_GPIO_WritePin(LD4_GPIO_Port, LD5_Pin, GPIO_PIN_SET);
   }
-
-	chech_value = HAL_I2C_Mem_Read(&hi2c2, PCA9685_ADDRESS, PCA9685_REG_PRESCALE_ADDR, 1, &prescale_test, 1, 1);
-  if (chech_value != HAL_OK)
-  {
-    HAL_GPIO_WritePin(LD4_GPIO_Port, LD5_Pin, GPIO_PIN_SET);
-  }
-
-  /* PCA9685 INITIALIZE END */
 
   /* USER CODE END 2 */
 
@@ -135,13 +117,12 @@ int main(void)
     // GPIO Testing code
     HAL_Delay(1000);
     HAL_GPIO_TogglePin(LD4_GPIO_Port, LD4_Pin);
-    button_state = HAL_GPIO_ReadPin(B1_GPIO_Port, B1_Pin);
-
-    if (button_state == 1)
+    for (uint8_t i=0; i<16; i++)
     {
-      off_value += 100;
-      PCA9685_Set_PWM(&hi2c2, 0, 0, off_value);
-      HAL_Delay(10);
+      if (Servo_Set_Throttle(&hi2c2, i, servo_throttle) != HAL_OK)
+      {
+        HAL_GPIO_WritePin(LD4_GPIO_Port, LD5_Pin, GPIO_PIN_SET);
+      }
     }
 
     /* USER CODE END WHILE */
