@@ -1,4 +1,7 @@
 # Control underwater thrusters with STM32 MCU & PCA9685
+<p align="center">
+  <img src="img/5_thruster_watertest.gif" width="50%">
+</p>
 
 # 1. BOM
 | Quantity |                      Name                       |      Link     |
@@ -52,9 +55,10 @@ For detail, you can read [PCA9685 Datasheet](https://pdf1.alldatasheet.com/datas
   <img src="img/set_throttle.gif" width="100%">
 </p>
 - Step 3: use [ESC Manual](https://cdn-global-hk.hobbyking.com/media/file/750066771X177509X21.pdf) to **Setting Throttle Range**
+
 - Step 4: enjoy!!!
 
 - For multi thruster, you just need to plug ESC into PCA9685 board.
 
 # 3. Result
-- Force of thruster is good, you can see video in [result link](https://drive.google.com/drive/u/1/folders/1xnDEEL-VJsIppaNRASAbsfVeFU7DwyFn)
+- Test 5 underwater thruster [result link](https://drive.google.com/drive/u/1/folders/1xnDEEL-VJsIppaNRASAbsfVeFU7DwyFn)
