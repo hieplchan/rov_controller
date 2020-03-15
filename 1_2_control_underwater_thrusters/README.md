@@ -54,7 +54,7 @@ For detail, you can read [PCA9685 Datasheet](https://pdf1.alldatasheet.com/datas
 <p align="center">
   <img src="img/set_throttle.gif" width="100%">
 </p>
-- Step 3: use [ESC Manual](https://cdn-global-hk.hobbyking.com/media/file/750066771X177509X21.pdf) to **Setting Throttle Range**
+- Step 3: use to  ESC Manual **Setting Throttle Range**: https://cdn-global-hk.hobbyking.com/media/file/750066771X177509X21.pdf
 
 - Step 4: enjoy!!!
 
